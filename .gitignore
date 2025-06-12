@@ -1,0 +1,44 @@
+# Go
+bin/
+*.exe
+*.test
+*.out
+*.log
+coverage.*
+*.coverprofile
+
+# Go modules
+/vendor/
+/go.sum
+/go.mod
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Docker
+*.env
+.env.*
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+*.backup
+
+# Kubernetes
+*.yaml~    # Arquivos temporários
+
+# Node (caso use algum script)
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# GitHub Actions
+.github/workflows/*.tmp
