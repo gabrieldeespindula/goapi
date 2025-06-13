@@ -6,6 +6,7 @@ import (
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"github.com/gabrieldeespindula/goapi/models"
 )
 
 var DB *gorm.DB
@@ -16,5 +17,10 @@ func Connect() {
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
+	err = database.AutoMigrate(&models.Record{})
+	if err != nil {
+			log.Fatalf("Erro no AutoMigrate: %v", err)
+	}
+
 	DB = database
 }
