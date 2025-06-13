@@ -1,77 +1,89 @@
 # goapi
 
-> A simple CRUD API in Go, built for learning Docker, Kubernetes, Terraform, and CI/CD.
+API simples em Go voltada para fins educacionais e experimentação com práticas modernas de DevOps, incluindo:
 
----
+- Build e versionamento de imagem Docker
+- Deploy via Kubernetes
+- Gestão de infraestrutura com Terraform
+- Automatização com GitHub Actions
 
-## ✨ Purpose
+## 🎯 Propósito
 
-This project serves as a practical learning base for:
+Este projeto tem como objetivo servir de base para aprendizado e demonstração de boas práticas de:
 
-- Go (building a RESTful API)
-- Docker (containerization for development and production)
-- Kubernetes (deployment, services, ingress, volumes)
-- Terraform (infrastructure as code for provisioning)
-- CI/CD with GitHub Actions
+- Organização de projetos em Go
+- Empacotamento com Docker
+- Deploy em ambientes orquestrados (como Kubernetes)
+- Separação entre código de aplicação e infraestrutura
 
----
+A aplicação em si é uma API CRUD básica, que se conecta a um banco PostgreSQL e permite gerenciar registros simples.
 
-## 📁 Project Structure
+## 📦 Estrutura
 
 ```
 
 goapi/
-├── api/                  # Go API source code
+├── Dockerfile             # Define a imagem da API
+├── go.mod / go.sum        # Dependências Go
+├── api/                   # Ponto de entrada da aplicação
 │   └── main.go
-├── Dockerfile            # Builds the Go application
-├── docker-compose.yml    # Local environment with API + DB
-├── k8s/                  # Kubernetes manifests
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── postgres-deploy.yaml
-│   └── ingress.yaml
-├── terraform/            # Terraform infrastructure config
-│   ├── main.tf
-│   └── variables.tf
-└── .github/workflows/    # CI/CD workflows
-└── deploy.yml
+├── db/                    # Conexão com banco de dados
+├── handlers/              # Lógica de tratamento de rotas
+├── models/                # Estrutura dos dados
+└── router/                # Definição das rotas da API
 
-```
+````
 
----
+## 🚀 Executar localmente
 
-## 🛠 Technologies
-
-- [Go](https://golang.org)
-- [Docker](https://www.docker.com/)
-- [Kubernetes](https://kubernetes.io/)
-- [Terraform](https://www.terraform.io/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [GitHub Actions](https://github.com/features/actions)
-
----
-
-## 🚀 Running Locally
+### Com Docker Compose
 
 ```bash
-  docker compose up --build
+docker compose up --build
+````
+
+API disponível em `http://localhost:8080`.
+
+### Sem Docker
+
+```bash
+go run ./api
 ```
 
+(Requer banco de dados PostgreSQL rodando localmente)
 
-The API will be available at: [http://localhost:8080](http://localhost:8080)
+## 🐳 Docker
 
----
+### Build manual da imagem
 
-## ✅ Planned Features
+```bash
+docker build -t ghcr.io/seu-usuario/goapi:<tag> .
+```
 
-* [ ] Create, retrieve, update, and delete records (`/records`)
-* [ ] PostgreSQL database with persistence
-* [ ] Local and cloud Kubernetes deployment
-* [ ] Terraform-managed infrastructure
-* [ ] CI/CD pipeline with GitHub Actions
+### Publicação (feita via CI)
 
----
+Ao criar uma nova tag Git (`v1.2.3`), o CI automaticamente:
 
-## 📚 In Progress
+* Faz o build da imagem
+* Publica para: `ghcr.io/seu-usuario/goapi:<tag>`
+* Usa tags imutáveis para rastreabilidade e rollback seguro
 
-This repository is a personal learning project and will be continuously updated and improved.
+## 🧪 Testes
+
+```bash
+go test ./...
+```
+
+## 📘 RFCs
+
+Todas as decisões de arquitetura, organização e deploy estão documentadas na pasta [`docs/rfcs/`](./docs/rfcs/).
+
+Documento inicial: [`docs/rfcs/0001-split-between-API-and-infra.md.md`](./docs/rfcs/0001-split-between-API-and-infra.md.md)
+
+## 🗂️ Repositórios relacionados
+
+Este repositório contém **apenas o código da API**.
+
+Infraestrutura (Kubernetes, Terraform, banco etc.) está no repositório:
+
+👉 [`goapi-infra`](https://github.com/seu-usuario/goapi-infra)
