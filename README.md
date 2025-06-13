@@ -1,74 +1,74 @@
 # goapi
 
-API simples em Go voltada para fins educacionais e experimentação com práticas modernas de DevOps, incluindo:
+A simple Go API aimed at educational purposes and experimentation with modern DevOps practices, including:
 
-- Build e versionamento de imagem Docker
-- Deploy via Kubernetes
-- Gestão de infraestrutura com Terraform
-- Automatização com GitHub Actions
+- Docker image build and versioning
+- Deployment via Kubernetes
+- Infrastructure management with Terraform
+- Automation with GitHub Actions
 
-## 🎯 Propósito
+## 🎯 Purpose
 
-Este projeto tem como objetivo servir de base para aprendizado e demonstração de boas práticas de:
+This project serves as a foundation to learn and demonstrate best practices for:
 
-- Organização de projetos em Go
-- Empacotamento com Docker
-- Deploy em ambientes orquestrados (como Kubernetes)
-- Separação entre código de aplicação e infraestrutura
+- Organizing Go projects
+- Packaging with Docker
+- Deploying in orchestrated environments (like Kubernetes)
+- Separating application code from infrastructure
 
-A aplicação em si é uma API CRUD básica, que se conecta a um banco PostgreSQL e permite gerenciar registros simples.
+The application itself is a basic CRUD API that connects to a PostgreSQL database to manage simple records.
 
-## 📦 Estrutura
+## 📦 Project Structure
 
 ```
 
 goapi/
-├── Dockerfile             # Define a imagem da API
-├── go.mod / go.sum        # Dependências Go
-├── api/                   # Ponto de entrada da aplicação
+├── Dockerfile             # Defines the API Docker image
+├── go.mod / go.sum        # Go dependencies
+├── api/                   # Application entrypoint
 │   └── main.go
-├── db/                    # Conexão com banco de dados
-├── handlers/              # Lógica de tratamento de rotas
-├── models/                # Estrutura dos dados
-└── router/                # Definição das rotas da API
+├── db/                    # Database connection
+├── handlers/              # Route handlers logic
+├── models/                # Data structures
+└── router/                # API routes definitions
 
 ````
 
-## 🚀 Executar localmente
+## 🚀 Running Locally
 
-### Com Docker Compose
+### With Docker Compose
 
 ```bash
 docker compose up --build
 ````
 
-API disponível em `http://localhost:8080`.
+API available at `http://localhost:8080`.
 
-### Sem Docker
+### Without Docker
 
 ```bash
 go run ./api
 ```
 
-(Requer banco de dados PostgreSQL rodando localmente)
+(Requires a local PostgreSQL database running)
 
 ## 🐳 Docker
 
-### Build manual da imagem
+### Manual Image Build
 
 ```bash
-docker build -t ghcr.io/seu-usuario/goapi:<tag> .
+docker build -t ghcr.io/your-username/goapi:<tag> .
 ```
 
-### Publicação (feita via CI)
+### Publishing (CI-driven)
 
-Ao criar uma nova tag Git (`v1.2.3`), o CI automaticamente:
+When creating a new Git tag (e.g. `v1.2.3`), the CI pipeline will automatically:
 
-* Faz o build da imagem
-* Publica para: `ghcr.io/seu-usuario/goapi:<tag>`
-* Usa tags imutáveis para rastreabilidade e rollback seguro
+* Build the Docker image
+* Push it to: `ghcr.io/your-username/goapi:<tag>`
+* Use immutable tags for traceability and safe rollback
 
-## 🧪 Testes
+## 🧪 Tests
 
 ```bash
 go test ./...
@@ -76,14 +76,14 @@ go test ./...
 
 ## 📘 RFCs
 
-Todas as decisões de arquitetura, organização e deploy estão documentadas na pasta [`docs/rfcs/`](./docs/rfcs/).
+All architecture, organization, and deployment decisions are documented under the [`docs/rfcs/`](./docs/rfcs/) folder.
 
-Documento inicial: [`docs/rfcs/0001-split-between-API-and-infra.md.md`](./docs/rfcs/0001-split-between-API-and-infra.md.md)
+Initial document: [`docs/rfcs/0001-split-between-API-and-infra.md`](./docs/rfcs/0001-split-between-API-and-infra.md)
 
-## 🗂️ Repositórios relacionados
+## 🗂️ Related Repositories
 
-Este repositório contém **apenas o código da API**.
+This repository contains **only the API code**.
 
-Infraestrutura (Kubernetes, Terraform, banco etc.) está no repositório:
+Infrastructure (Kubernetes, Terraform, database, etc.) is located in the repository:
 
-👉 [`goapi-infra`](https://github.com/seu-usuario/goapi-infra)
+👉 [`goapi-infra`](https://github.com/your-username/goapi-infra)
