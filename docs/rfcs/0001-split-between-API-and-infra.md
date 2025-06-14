@@ -1,13 +1,5 @@
 # RFC 0001: Split Between API and Infrastructure Repositories
 
-- **Title:** Split Between API and Infrastructure Repositories
-- **Status:** Accepted
-- **Date:** 2025-06-13
-- **Author:** Gabriel de Espindula
-- **Supersedes:** None
-
----
-
 ## Objective
 
 To establish a clean separation between the Go API codebase and the infrastructure that runs it, by splitting them into two distinct and purpose-driven repositories. This separation aims to simplify deployments, encourage modular development, and facilitate infrastructure automation using Docker, Kubernetes, and Terraform.

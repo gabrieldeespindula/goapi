@@ -19,7 +19,7 @@ func Connect() {
 	}
 	err = database.AutoMigrate(&models.Record{})
 	if err != nil {
-			log.Fatalf("Erro no AutoMigrate: %v", err)
+			log.Fatalf("Failed to AutoMigrate: %v", err)
 	}
 
 	DB = database
