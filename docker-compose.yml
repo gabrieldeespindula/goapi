@@ -1,0 +1,29 @@
+services:
+  goapi:
+    image: golang:1.23-alpine
+    container_name: goapi-dev
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/goapi_db?sslmode=disable
+    depends_on:
+      - postgres
+    command: go run ./api
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: goapi-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: goapi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

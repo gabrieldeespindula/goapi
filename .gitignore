@@ -7,11 +7,6 @@ bin/
 coverage.*
 *.coverprofile
 
-# Go modules
-/vendor/
-/go.sum
-/go.mod
-
 # Editor / OS
 .DS_Store
 *.swp
@@ -21,20 +16,6 @@ coverage.*
 # Docker
 *.env
 .env.*
-
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-.terraform.lock.hcl
-crash.log
-*.backup
-
-# Kubernetes
-*.yaml~    # Arquivos temporários
-
-# Node (caso use algum script)
-node_modules/
 
 # Logs
 logs/
