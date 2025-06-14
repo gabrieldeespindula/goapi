@@ -17,20 +17,6 @@ coverage.*
 *.env
 .env.*
 
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-.terraform.lock.hcl
-crash.log
-*.backup
-
-# Kubernetes
-*.yaml~    # Arquivos temporários
-
-# Node (caso use algum script)
-node_modules/
-
 # Logs
 logs/
 *.log
