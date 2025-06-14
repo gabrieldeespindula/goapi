@@ -5,7 +5,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY ./api ./api
+COPY . ./
 
 RUN go build -o goapi ./api
 
